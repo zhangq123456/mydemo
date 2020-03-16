@@ -1,0 +1,6 @@
+FROM 192.168.87.134:7080/rancher/nginx:1.17.4-alpine
+MAINTAINER qzhang
+
+RUN rm -f /usr/share/nginx/html/*
+
+ADD html/* /usr/share/nginx/html/
