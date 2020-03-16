@@ -1,9 +1,2 @@
-stages:
-- name: images
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./DOCKERFILE
-      buildContext: .
-      tag: mynginx
 timeout: 60
 notification: {}
