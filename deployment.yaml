@@ -1,6 +1,6 @@
 apiVersion: apps/v1
-kind: Deployment　　　　#kind是要创建的资源类型，这里是Deploymnet
-metadata:　　　　　　　　#metadata是该资源的元数据，name是必须的元数据项
+kind: Deployment
+metadata:
   name: mynginx-deployment
   labels:
     app: mynginx
