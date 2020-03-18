@@ -4,18 +4,19 @@ metadata:
   name: mynginx-deployment
   labels:
     app: mynginx
-spec:　　　　　　　　　　#spec部分是该Deployment的规则说明
-  replicas: 1　　　　　 #relicas指定副本数量，默认为1
+spec:
+  replicas: 2
   selector:
     matchLabels:
       app: mynginx
-  template:　　　　　　#template定义Pod的模板，这是配置的重要部分
-    metadata:　　　　  #metadata定义Pod的元数据，至少要顶一个label，label的key和value可以任意指定
+  template:
+    metadata:
       labels:
         app: mynginx
-    spec:　　　　　　　#spec描述的是Pod的规则，此部分定义pod中每一个容器的属性，name和image是必需的
+    spec:
       containers:
       - name: mynginx
         image: nginxzq
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
