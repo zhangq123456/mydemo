@@ -1,4 +1,4 @@
-FROM 192.168.87.134:7080/rancher/nginx:1.17.4-alpine
+FROM docker.io/library/nginx:latest
 MAINTAINER qzhang
 
 RUN rm -f /usr/share/nginx/html/*
