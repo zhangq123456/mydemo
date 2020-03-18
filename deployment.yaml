@@ -1,32 +1,21 @@
 apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mynginx
-  namespace: default
-spec:
-  replicas: 1
-  template:
-    spec:
+kind: Deployment　　　　#kind是要创建的资源类型，这里是Deploymnet
+metadata:　　　　　　　　#metadata是该资源的元数据，name是必须的元数据项
+  name: mynginx-deployment
+  labels:
+    app: mynginx
+spec:　　　　　　　　　　#spec部分是该Deployment的规则说明
+  replicas: 1　　　　　 #relicas指定副本数量，默认为1
+  selector:
+    matchLabels:
+      app: mynginx
+  template:　　　　　　#template定义Pod的模板，这是配置的重要部分
+    metadata:　　　　  #metadata定义Pod的元数据，至少要顶一个label，label的key和value可以任意指定
+      labels:
+        app: mynginx
+    spec:　　　　　　　#spec描述的是Pod的规则，此部分定义pod中每一个容器的属性，name和image是必需的
       containers:
-      - image: nginxzq
-        imagePullPolicy: Always
-        name: mynginx
+      - name: mynginx
+        image: nginxzq
         ports:
         - containerPort: 80
-          protocol: TCP
-        resources: {}
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities: {}
-          privileged: false
-          readOnlyRootFilesystem: false
-          runAsNonRoot: false
-        stdin: true
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        tty: true
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
